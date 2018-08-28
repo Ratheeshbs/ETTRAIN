@@ -1,0 +1,16 @@
+{
+  "ETTRAIN.DB::A": {
+    "target": {
+      "object": "ETTRAIN.DB::tinyf.world",
+      "schema": "ETTRAIN_HDI_DB_1",
+      "database": "SBA"
+    }
+  },
+  "ETTRAIN.DB::B": {
+    "target": {
+      "object": "ETTRAIN.DB::tinyf.Country",
+      "schema": "ETTRAIN_HDI_DB_1",
+      "database": "SBA"
+    }
+  }
+}

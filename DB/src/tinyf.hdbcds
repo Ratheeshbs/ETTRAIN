@@ -1,0 +1,13 @@
+namespace ETTRAIN.DB;
+
+context tinyf {
+    entity world {
+        key continent : String(100);
+    };
+
+    /*@@layout{"layoutInfo":{"x":-568,"y":-95.5}}*/
+    entity Country {
+        key Name   : String(100);
+            partof : association[0..1] to world;
+    };
+};

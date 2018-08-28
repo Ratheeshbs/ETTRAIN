@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="ETTRAIN.DB::myview" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="myview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ETTRAIN.DB::tinyf.Country">
+    <resourceUri>ETTRAIN.DB::tinyf.Country</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="Name">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="partof_continent">
+        <descriptions defaultDescription="partof_continent"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="ETTRAIN.DB::tinyf.Country">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Name" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="partof_continent" source="partof.continent"/>
+    </input>
+    <filter>&quot;partof_continent&quot;='Europe'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="Name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Name"/>
+    </attribute>
+    <attribute id="partof_continent" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="partof_continent"/>
+      <keyMapping columnObjectName="Projection_1" columnName="partof_continent"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="93" y="202"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

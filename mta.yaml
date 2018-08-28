@@ -1,0 +1,38 @@
+ID: ETTRAIN
+_schema-version: '2.0'
+version: 1.0.0
+
+modules:
+ - name: DB
+   type: hdb
+   path: DB
+   requires:
+    - name: hdi_DB
+
+
+ - name: tinyjs
+   type: nodejs
+   path: tinyjs
+   requires:
+    - name: DB
+    - name: hdi_DB
+   provides:
+    - name: tinyjs_api
+      properties:
+         url: ${default-url}
+
+ - name: tinyui
+   type: html5
+   path: tinyui
+   requires:
+    - name: tinyjs_api
+      group: destinations
+      properties:
+         name: tinyjs_api
+         url: ~{url}
+
+resources:
+ - name: hdi_DB
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

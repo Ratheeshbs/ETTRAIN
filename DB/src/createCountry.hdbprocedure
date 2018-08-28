@@ -1,0 +1,18 @@
+PROCEDURE "ETTRAIN.DB::createCountry" ( IN im_country NVARCHAR(100), im_continent NVARCHAR(100), OUT ex_error NVARCHAR(100))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER AS
+ --READS SQL DATA AS
+BEGIN declare noc integer; 
+select count(*) into noc from "ETTRAIN.DB::tinyf.world"   
+where "continent" = im_continent;
+if :noc = 0 
+then     ex_error := 'ERROR: Continent ' || :im_continent || ' does not exist!';
+else    
+select count(*) into noc from "ETTRAIN.DB::tinyf.Country" 
+where "Name" = im_country;  
+if :noc > 0 then  ex_error := 'ERROR: Country ' || :im_country || ' already exists!';   
+else       
+insert into "ETTRAIN.DB::tinyf.Country" values (im_country, im_continent);     
+end if; 
+end if; 
+END;
